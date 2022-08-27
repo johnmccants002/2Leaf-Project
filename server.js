@@ -16,7 +16,6 @@ require('./config/passport');
 // require routes
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
-var postsRouter = require('./routes/posts');
 var usersRouter = require('./routes/users');
 
 
@@ -57,7 +56,6 @@ app.use(function (req, res, next) {
 // router middleware
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
-app.use('/posts', postsRouter)
 app.use('/user', usersRouter)
 
 // catch 404 and forward to error handler
