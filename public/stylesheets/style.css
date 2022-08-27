@@ -1,8 +1,79 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: blue;
 }
 
 a {
   color: #00B7FF;
 }
+
+.nav-logo {
+  height: 80px;
+  width: 80px;
+}
+
+/* .header-div {
+  background-image:url('../../banner_image_1.png');
+  margin: 0 auto;
+  height: 200px;
+  width: 100%;
+
+} */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+li {
+  float: left;
+}
+
+.portal-button-li {
+  float: right;
+  padding-right: 20px;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.portal-button {
+  background-color: #FF9900;
+  font: 20px "Open Sans";
+  border-style: none;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+
+}
+
+.main-header {
+  text-align: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 200px;
+  z-index: -1;
+}
+
+.main-header img {
+  height: 100px;
+}
+

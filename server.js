@@ -27,11 +27,13 @@ var app = express()
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
 
+
 // middleware
 app.use(logger('dev'))
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.json())
+// app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'assets')));
 app.use(cookieParser());
 app.use(methodOverride('_method'))
 
@@ -55,8 +57,8 @@ app.use(function (req, res, next) {
 
 // router middleware
 app.use('/', indexRouter)
-app.use('/auth', authRouter)
-app.use('/user', usersRouter)
+// app.use('/auth', authRouter)
+app.use('/users', usersRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
