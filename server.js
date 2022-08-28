@@ -10,6 +10,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser')
 var LocalStrategy = require('passport-local').Strategy;
 
+
 require('dotenv').config();
 // config/database depends upon process.env.DATABASE_URL
 require('./config/database');
@@ -42,6 +43,7 @@ app.use(cookieParser());
 app.use(methodOverride('_method'))
 
 
+
 // create application/json parser
 var jsonParser = bodyParser.json()
  
@@ -60,6 +62,7 @@ app.use(
     saveUninitialized: true,
   })
 )
+
 
 // passport middleware
 app.use(passport.initialize());

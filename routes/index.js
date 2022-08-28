@@ -9,6 +9,12 @@ var router = express.Router();
 var bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var jsonParser = bodyParser.json()
+var MagicLinkStrategy = require('passport-magic-link').Strategy;
+var sendgrid = require('@sendgrid/mail');
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
+const user = require('../models/user');
+const crypto = require('crypto')
+const {isNotVerified, isLoggedIn} = require('..//config/auth')
 
 
 router.get('/', function (req, res) {
@@ -19,7 +25,7 @@ router.get('/register', function(req, res) {
     res.render('register', { });
 });
 
-router.post('/register', urlencodedParser, function(req, res) {
+router.post('/register2', urlencodedParser, function(req, res) {
     console.log("this is the username: ", req.body.username, req.body.password)
     User.register(new User({username : req.body.username }), req.body.password, function(err, user) {
         if (err) {
@@ -32,11 +38,46 @@ router.post('/register', urlencodedParser, function(req, res) {
     });
 });
 
+router.post('/register', urlencodedParser, async function(req, res) {
+    var newUser = new User({
+        username : req.body.username,
+        email : req.body.email,
+        emailToken: crypto.randomBytes(64).toString('hex')
+    });
+    var link = `http://localhost:3000/verify-email?token=${user.emailToken}`
+    User.register(newUser, req.body.password, async function(err, user) {
+        if(err) {
+            return res.redirect('/register')
+        }
+        // <a href="http://${req.headers.host}/verify-email?token=${user.emailToken}"
+        // <p>Click the link below to finish signing in to LevelUp.</p><p><a href="' + link + '">Sign in</a></p>
+        console.log("this is the user email", user.email)
+        var msg = {
+            to: user.email,
+            from: process.env.EMAIL,
+            subject: 'Sign in to Level Up',
+            text: `Hello! Click the link below to finish signing in to LevelUp. http://localhost:3000/verify-email?token=${user.emailToken}`,
+            html: `<a href="http://localhost:3000/verify-email?token=${user.emailToken}"> Email Verificaton Click Here</a>`
+          };
+
+        try {
+            await sendgrid.send(msg);
+            console.log("Success sending Sendgrid message")
+            res.redirect('/')
+
+        } catch(error) {
+            console.log(error);
+            
+        }
+    })
+
+});
+
 router.get('/login', function(req, res) {
     res.render('login', { user : req.user });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post('/login', isNotVerified, passport.authenticate('local'), function(req, res) {
     res.redirect('/');
 });
 
@@ -52,6 +93,47 @@ router.get('/ping', function(req, res){
 router.get('/parentportal', function(req, res) {
     res.render('portal')
 })
+
+router.get('/login/email/verify', passport.authenticate('magiclink', {
+    successReturnToOrRedirect: '/',
+    failureRedirect: '/login'
+  }));
+
+router.post('/login/email', passport.authenticate('magiclink', {
+    action: 'requestToken',
+    failureRedirect: '/login'
+  }), function(req, res, next) {
+    res.redirect('/login/email/check');
+  });
+
+router.get('/login/email/check', async function(req, res, next) {
+    res.render('login/email/check');
+
+});
+
+router.get('/verify-email', async function(req, res) {
+    try {
+        const user = await User.findOne({emailToken: req.query.token});
+    if (!user) {
+        
+        return res.redirect('/')
+    }
+        user.emailToken = null;
+    user.isVerified = true;
+    await user.save();
+    await req.login(user, async(err) => {
+        if(err) return next(err);
+    
+        const redirectUrl = req.session.redirectTo || '/';
+        res.redirect(redirectUrl);
+    });
+} catch(error) {
+    console.log(error, "Error email check");
+    res.redirect('/')
+}
+})
+  
+  
 
 module.exports = router;
 
