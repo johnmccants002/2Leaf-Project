@@ -8,6 +8,8 @@ const User = new mongoose.Schema({
   email: String,
   emailToken: String,
   isVerified: Boolean,
+  isMailUser: Boolean,
+  mailUser: {type: Schema.Types.ObjectId, ref: 'MailUser', required: false},
 })
 
 

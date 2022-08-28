@@ -51,13 +51,15 @@
   <% } %>
 
 
-  <h1>Sign in</h1>
-  <form action="/login/email" method="post">
+  <h1>Stay Updated</h1>
+  <form action="/levelup/mailing" method="post">
       <section>
+          <label for="name">Name</label>
+          <input type="text" name="name" placeholder="Enter Name"> 
           <label for="email">Email</label>
-          <input id="email" name="email" type="text" autocomplete="username" required autofocus>
+          <input id="email" name="email" type="text" placeholder="Enter Email" autocomplete="username" required autofocus>
       </section>
-      <button type="submit">Sign in with Email</button>
+      <button type="submit">Sign Up For Mailing List</button>
   </form>
     
 
