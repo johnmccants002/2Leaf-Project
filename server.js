@@ -6,6 +6,10 @@ var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
 var methodOverride = require('method-override');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser')
+var LocalStrategy = require('passport-local').Strategy;
+
 require('dotenv').config();
 // config/database depends upon process.env.DATABASE_URL
 require('./config/database');
@@ -37,6 +41,17 @@ app.use(express.static(path.join(__dirname, 'assets')));
 app.use(cookieParser());
 app.use(methodOverride('_method'))
 
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+ 
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
 // session middleware
 app.use(
   session({
@@ -50,10 +65,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
+
 
 // router middleware
 app.use('/', indexRouter)
