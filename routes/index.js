@@ -25,18 +25,18 @@ router.get('/register', function(req, res) {
     res.render('register', { });
 });
 
-router.post('/register2', urlencodedParser, function(req, res) {
-    console.log("this is the username: ", req.body.username, req.body.password)
-    User.register(new User({username : req.body.username }), req.body.password, function(err, user) {
-        if (err) {
-            return res.render('register', { user : user });
-        }
+// router.post('/register2', urlencodedParser, function(req, res) {
+//     console.log("this is the username: ", req.body.username, req.body.password)
+//     User.register(new User({username : req.body.username }), req.body.password, function(err, user) {
+//         if (err) {
+//             return res.render('register', { user : user });
+//         }
 
-        passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
-        });
-    });
-});
+//         passport.authenticate('local')(req, res, function () {
+//             res.redirect('/');
+//         });
+//     });
+// });
 
 router.post('/register', urlencodedParser, async function(req, res) {
     console.log(req.body.mailuser,  "Mail User Checkbox")
@@ -91,16 +91,13 @@ router.post('/register', urlencodedParser, async function(req, res) {
 });
 
 router.post('/levelup/mailing', urlencodedParser, async function(req, res) {
-
-    try {
+    console.log(req.body.email, "this is the email")
         const mailUser = await MailUser.findOne({email: req.body.email})
         if (mailUser) {
             console.log('already have user')
             res.redirect('/')
         }
-    } catch(error) {
-        console.log(error)
-    
+
     
     var newMailUser = new MailUser({
         name : req.body.name,
@@ -126,7 +123,7 @@ router.post('/levelup/mailing', urlencodedParser, async function(req, res) {
         res.redirect('/')
         
     }
-}
+
 
 
 })
@@ -204,7 +201,6 @@ router.get('/verify-email', async function(req, res) {
 router.get('/verify-email/levelup', async function(req, res) {
     try {
         const mailUser = await MailUser.findOne({emailToken: req.query.token});
-
         if(!mailUser) {
             return res.redirect('/')
         }
