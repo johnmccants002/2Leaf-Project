@@ -44,4 +44,12 @@ Project is created with:
 - Carousel header image using CSS
 - Popup modal after Parent Portal button is clicked
 
+## Running the App instructions
+
+- To run the app use the command npm start
+- To get node going use the command node server.js
+- If you want to access the Parent Portal tap the button in the top right and when it asks for a password type 123456 <-- Yes its an actual user in Mongo btw
+- If you sign up at the bottom of the page the page will reload and an email should be sent with a link. Click the link and it should redirect you to the page. Once done the user in the database changes to verified.
+
+
 <p align="right">(<a href="#top">back to top</a>)</p>
