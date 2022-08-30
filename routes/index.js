@@ -17,6 +17,7 @@ const {isNotVerified, isLoggedIn} = require('..//config/auth')
 var MailUser = require('../models/mailuser')
 
 
+
 router.get('/', function (req, res) {
 
     res.render('index', { user : req.user, username: "parent" });
@@ -26,18 +27,6 @@ router.get('/register', function(req, res) {
     res.render('register', { });
 });
 
-// router.post('/register2', urlencodedParser, function(req, res) {
-//     console.log("this is the username: ", req.body.username, req.body.password)
-//     User.register(new User({username : req.body.username }), req.body.password, function(err, user) {
-//         if (err) {
-//             return res.render('register', { user : user });
-//         }
-
-//         passport.authenticate('local')(req, res, function () {
-//             res.redirect('/');
-//         });
-//     });
-// });
 
 router.post('/register', urlencodedParser, async function(req, res) {
     console.log(req.body.mailuser,  "Mail User Checkbox")
@@ -67,14 +56,12 @@ router.post('/register', urlencodedParser, async function(req, res) {
         if(err) {
             return res.redirect('/register')
         }
-        // <a href="http://${req.headers.host}/verify-email?token=${user.emailToken}"
-        // <p>Click the link below to finish signing in to LevelUp.</p><p><a href="' + link + '">Sign in</a></p>
         console.log("this is the user email", user.email)
         var msg = {
             to: user.email,
             from: process.env.EMAIL,
-            subject: 'Sign in to Level Up',
-            text: `Hello! Click the link below to finish signing in to LevelUp. http://localhost:3000/verify-email?token=${user.emailToken}`,
+            subject: 'Email Confirmation: Level Up',
+            text: `Hello! Click the link below to verify your email!`,
             html: `<a href="http://localhost:3000/verify-email/?token=${user.emailToken}"> Email Verificaton Click Here</a>`
           };
 
@@ -100,9 +87,6 @@ router.post('/levelup/mailing', urlencodedParser, async function(req, res) {
             res.redirect('/');
         } 
 
-        
-
-    
     var newMailUser = new MailUser({
         name : req.body.name,
         email : req.body.email,
@@ -126,9 +110,6 @@ router.post('/levelup/mailing', urlencodedParser, async function(req, res) {
         res.redirect('/')
         
     }
-
-
-
 })
 
 router.get('/login', function(req, res) {
@@ -162,10 +143,6 @@ router.post('/login', function(req, res) {
                     res.json({success: false, message: err}) 
                     res.redirect('/')
                   }else{ 
-                    // const token = jwt.sign({userId : user._id, 
-                    //    username:user.username}, secretkey, 
-                        //   {expiresIn: '24h'}) 
-                    // res.json({success:true, message:"Authentication successful" }); 
                     res.redirect('/parentportal');
                   } 
                 }) 
@@ -191,20 +168,15 @@ router.get('/ping', function(req, res){
 });
 
 router.get('/parentportal', function(req, res) {
-    res.render('portal')
+
+    if (req.user) {
+        res.render('portal')
+    } else {
+        res.redirect('/')
+    }
+    
 })
 
-// router.get('/login/email/verify', passport.authenticate('magiclink', {
-//     successReturnToOrRedirect: '/',
-//     failureRedirect: '/login'
-//   }));
-
-// router.post('/login/email', passport.authenticate('magiclink', {
-//     action: 'requestToken',
-//     failureRedirect: '/login'
-//   }), function(req, res, next) {
-//     res.redirect('/login/email/check');
-//   });
 
 router.get('/login/email/check', async function(req, res, next) {
     res.render('login/email/check');

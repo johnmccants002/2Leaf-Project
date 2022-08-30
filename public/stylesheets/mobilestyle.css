@@ -9,77 +9,277 @@
  
 @media all and (min-width: 768px) and (max-width: 1024px) { }
  
-@media all and (min-width: 480px) and (max-width: 768px) { }
- 
-@media all and (max-width: 480px) { }
- 
-/*------------------------------------------
-  Foundation Media Queries 
-   http://foundation.zurb.com/docs/media-queries.html
---------------------------------------------*/
- 
-/* Small screens - MOBILE */
-@media only screen { } /* Define mobile styles - Mobile First */
- 
-@media only screen and (max-width: 40em) { } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
- 
-/* Medium screens - TABLET */
-@media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
- 
-@media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
- 
-/* Large screens - DESKTOP */
-@media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
- 
-@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1024px and max-width 1440px, use when QAing large screen-only issues */
- 
-/* XLarge screens */
-@media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
- 
-@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
- 
-/* XXLarge screens */
-@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xlarge screens */
- 
-/*------------------------------------------*/
- 
- 
- 
-/* Portrait */
-@media screen and (orientation:portrait) { /* Portrait styles here */ }
-/* Landscape */
-@media screen and (orientation:landscape) { /* Landscape styles here */ }
- 
- 
-/* CSS for iPhone, iPad, and Retina Displays */
- 
-/* Non-Retina */
-@media screen and (-webkit-max-device-pixel-ratio: 1) {
-}
- 
-/* Retina */
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-only screen and (-o-min-device-pixel-ratio: 3/2),
-only screen and (min--moz-device-pixel-ratio: 1.5),
-only screen and (min-device-pixel-ratio: 1.5) {
-}
- 
-/* iPhone Portrait */
-@media screen and (max-device-width: 480px) and (orientation:portrait) {
+@media all and (min-width: 480px) and (max-width: 768px) { 
+
+    div#captioned-gallery {
+        width: 100%;
+        overflow: hidden;
+        height: 160px;
+        position: relative;
+        
+        
+    }
+
+    .about-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        max-width: 100%;
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+
+    .portal-ul {
+        height: 60px;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .home-of-team-div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .program-mission-div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .yellow-h1 {
+        text-align: center;
+    }
+
+    .coachingstaff {
+        text-align: center;
+    }
+
+    .coachcontainer {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        padding-top: 40px;
+    }
+
+    .about-p {
+        text-align: left;
+    }
+
+    .mailsubmitbutton {
+        font-size: 16px;
+        width: 350px;
+        height: 35px;
+
+    }
+
+    input {
+        font-size: 16px;
+        width: 350px;
+        height: 35px;
+
+    }
+
+    /* .partnership-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    } */
+
     /* .partner-logo-container {
         display: flex;
         flex-direction: column;
-        padding-top: 10px;
-        gap: 40px;
+        padding-top: 20px;
+        gap: 30px;
+    } */
+
+/* 
+    .ymca-div {
+        display: block;
+        margin: auto;
+     
     }
 
     .village-div {
-        flex: 1 1 0px
+        display: block;
+        margin: auto;
+    } */
+
+    .partnership-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
+        
+      }
+      
+      .partner-logo-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding-top: 20px;
+      }
+      
+      #village-div {
+        padding-top: 0px;
+        margin-right: 0px;
+      }
+
+      #village-div > img {
+        height: 40px;
+      }
+
+      #ymca-div > img {
+        height: 40px;
+      }
+      
+      #ymca-div {
+        margin-left: 0px;
+      }
+
+    .tysponsorcontainer {
+        background-image: url(/footer_image.png);
+        display: flex;
+        flex-direction: column;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: auto;
+        color: #FF9900;
+        text-align: center;
+        padding-top: 20px;
     }
 
-    .ymca-div {
-        flex: 1 1 0px
-    } */
+    .tyimgcontainer {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        margin-bottom: 40px;
+        margin-top: -100px;
+    
+    }
+
+    .tyimg {
+        width: 120px;
+        height: 100px;
+        display: block;
+        margin: auto;
+        
+    }
+
+    /* Modal Content */
+.modal-div {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 100%;
+  height: 380px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  
+
+}
+.modal-content {
+  width: auto;
+  padding-top: 20px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: #FF9900;
+  float: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* .modal-header {
+  padding: 2px 16px;
+  background-color: white;
+  color: white;
+} */
+
+/* .modal-body {padding: 2px 16px;} */
+
+
+.modal-h1 {
+  color: #FF9900;
+}
+
+.modal-form-div {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+ 
+}
+
+.modal-button {
+  background-color:#FF9900;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.modal-item {
+  margin-top: 20px;
+}
+
+.modal-item > input {
+    width: 100%;
+}
+
+.reachout {
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+}
+
+
+
+    
+    
 
     
 
@@ -147,6 +347,11 @@ only screen and (min-device-pixel-ratio: 1.5) {
     h1 {
         font-size: 40px;
     }
+    .logout-button {
+        font-size: 20px;
+        width: 200px;
+        height: 50px;
+    }
 } 
  
 /* iPhone Landscape */
@@ -155,12 +360,84 @@ only screen and (min-device-pixel-ratio: 1.5) {
  
 /* iPad Portrait */
 @media screen and (min-device-width: 481px) and (orientation:portrait) {
-    /* .partner-logo-container {
+
+    .portal-button {
+        font-size: 20px;
+        width: 200px;
+        height: 50px;
+    }
+    .about-div {
         display: flex;
         flex-direction: column;
-        padding-top: 10px;
-        gap: 40px;
+        align-items: center;
+        padding-top: 40px;
+        max-width: 100%;
+        padding-left: 8%;
+        padding-right: 8%;
+        
+    }
+
+    .home-of-team-div p {
+        color: white;
+        margin-left: 40px;
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .program-mission-div p  {
+        color: white;
+        margin-left: 40px;
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .mailsubmitbutton {
+        font-size: 20px;
+        width: 80%;
+        height: 80px;
+
+    }
+
+    input {
+        font-size: 24px;
+        width: 80%;
+        height: 60px;
+
+    }
+    
+
+
+    /* -- Parent Portal -- */
+    div#captioned-gallery {
+        width: 100%;
+        overflow: hidden;
+        height: 400px;
+        position: relative;
+    }
+
+    /* .parent-portal-header-h1 {
+        position: absolute;
     } */
+    .parent-mid-top-half {
+        /* display: flex;
+        flex-direction: row;
+        padding-top: 60px;
+        gap: 20px; */
+        width: 100%;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .parent-mid-mid-half {
+        width: 100%;
+    }
+
+    .parent-bottom-half {
+        width: 100%;
+    }
+
 
     .village-div {
         flex: 1 1 0px
@@ -170,8 +447,525 @@ only screen and (min-device-pixel-ratio: 1.5) {
         flex: 1 1 0px
     }
 
-    .parent-mid-top-half {
+    .logout-button {
+        font-size: 20px;
+        width: 200px;
+        height: 50px;
+    }
 
+    .nav-logo {
+        position: absolute;
+        width: 120px;
+        height: 100px;
+        left: 40px;
+        top: 40px;
+    }
+}
+ 
+@media all and (max-width: 480px) { }
+ 
+/*------------------------------------------
+  Foundation Media Queries 
+   http://foundation.zurb.com/docs/media-queries.html
+--------------------------------------------*/
+ 
+/* Small screens - MOBILE */
+@media only screen { } /* Define mobile styles - Mobile First */
+ 
+@media only screen and (max-width: 40em) { } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+ 
+/* Medium screens - TABLET */
+@media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
+ 
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+ 
+/* Large screens - DESKTOP */
+@media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
+ 
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1024px and max-width 1440px, use when QAing large screen-only issues */
+ 
+/* XLarge screens */
+@media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
+ 
+@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+ 
+/* XXLarge screens */
+@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xlarge screens */
+ 
+/*------------------------------------------*/
+ 
+ 
+ 
+/* Portrait */
+@media screen and (orientation:portrait) { /* Portrait styles here */ }
+/* Landscape */
+@media screen and (orientation:landscape) { /* Landscape styles here */ }
+ 
+ 
+/* CSS for iPhone, iPad, and Retina Displays */
+ 
+/* Non-Retina */
+@media screen and (-webkit-max-device-pixel-ratio: 1) {
+}
+ 
+/* Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5) {
+}
+ 
+/* iPhone Portrait */
+@media screen and (max-device-width: 480px) and (orientation:portrait) {
+
+    div#captioned-gallery {
+        width: 100%;
+        overflow: hidden;
+        height: 160px;
+        position: relative;
+        
+        
+    }
+
+    .about-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        max-width: 100%;
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+
+    .portal-ul {
+        height: 60px;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .home-of-team-div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .program-mission-div {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .yellow-h1 {
+        text-align: center;
+    }
+
+    .coachingstaff {
+        text-align: center;
+    }
+
+    .coachcontainer {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        padding-top: 40px;
+    }
+
+    .about-p {
+        text-align: left;
+    }
+
+    .mailsubmitbutton {
+        font-size: 16px;
+        width: 350px;
+        height: 35px;
+
+    }
+
+    input {
+        font-size: 16px;
+        width: 350px;
+        height: 35px;
+
+    }
+
+    /* .partnership-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    } */
+
+    /* .partner-logo-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+        gap: 30px;
+    } */
+
+/* 
+    .ymca-div {
+        display: block;
+        margin: auto;
+     
+    }
+
+    .village-div {
+        display: block;
+        margin: auto;
+    } */
+
+    .partnership-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
+        
+      }
+      
+      .partner-logo-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding-top: 20px;
+      }
+      
+      #village-div {
+        padding-top: 0px;
+        margin-right: 0px;
+      }
+
+      #village-div > img {
+        height: 40px;
+      }
+
+      #ymca-div > img {
+        height: 40px;
+      }
+      
+      #ymca-div {
+        margin-left: 0px;
+      }
+
+    .tysponsorcontainer {
+        background-image: url(/footer_image.png);
+        display: flex;
+        flex-direction: column;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: auto;
+        color: #FF9900;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .tyimgcontainer {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        margin-bottom: 40px;
+        margin-top: -100px;
+    
+    }
+
+    .tyimg {
+        width: 120px;
+        height: 100px;
+        display: block;
+        margin: auto;
+        
+    }
+
+    /* Modal Content */
+.modal-div {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 100%;
+  height: 380px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  
+
+}
+.modal-content {
+  width: auto;
+  padding-top: 20px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+  color: #FF9900;
+  float: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* .modal-header {
+  padding: 2px 16px;
+  background-color: white;
+  color: white;
+} */
+
+/* .modal-body {padding: 2px 16px;} */
+
+
+.modal-h1 {
+  color: #FF9900;
+}
+
+.modal-form-div {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+ 
+}
+
+.modal-button {
+  background-color:#FF9900;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.modal-item {
+  margin-top: 20px;
+}
+
+.modal-item > input {
+    width: 100%;
+}
+
+.reachout {
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+}
+
+
+
+    
+    
+
+    
+
+
+   /* -- Parent Portal -- */
+
+
+
+    .parent-mid-top-half {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .spring-div {
+        background-image: none; 
+    }
+
+    .spring-div > h1 {
+        padding-top: 0;
+        padding-left: 0;
+        border-bottom: 2px solid #FF9900;
+        padding-bottom: 20px;
+        text-align: center;
+   
+        
+
+    }
+
+    .location-div {
+        background-image: none;
+    }
+
+    .location-div > h1 {
+        padding-top: 0;
+        padding-left: 0;
+        /* border-bottom: 2px solid #FF9900;
+        text-align: center;
+        padding-bottom: 20px; */
+       
+    }
+
+    .parent-mid-mid-half {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 20px;
+        width: 100%;
+    }
+
+    .parent-bottom-half {
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+        gap: 20px;
+        margin-bottom: 40px;
+        width: 100%;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+    .logout-button {
+        font-size: 20px;
+        width: 200px;
+        height: 50px;
+    }
+} 
+ 
+/* iPhone Landscape */
+@media screen and (max-device-width: 480px) and (orientation:landscape) {
+}
+ 
+/* iPad Portrait */
+@media screen and (min-device-width: 481px) and (orientation:portrait) {
+
+    .portal-button {
+        font-size: 20px;
+        width: 200px;
+        height: 50px;
+    }
+    .about-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        max-width: 100%;
+        padding-left: 8%;
+        padding-right: 8%;
+        
+    }
+
+    .home-of-team-div p {
+        color: white;
+        margin-left: 40px;
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .program-mission-div p  {
+        color: white;
+        margin-left: 40px;
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .mailsubmitbutton {
+        font-size: 20px;
+        width: 80%;
+        height: 80px;
+
+    }
+
+    input {
+        font-size: 24px;
+        width: 80%;
+        height: 60px;
+
+    }
+    
+
+
+    /* -- Parent Portal -- */
+    div#captioned-gallery {
+        width: 100%;
+        overflow: hidden;
+        height: 400px;
+        position: relative;
+    }
+
+    /* .parent-portal-header-h1 {
+        position: absolute;
+    } */
+    .parent-mid-top-half {
+        /* display: flex;
+        flex-direction: row;
+        padding-top: 60px;
+        gap: 20px; */
+        width: 100%;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .parent-mid-mid-half {
+        width: 100%;
+    }
+
+    .parent-bottom-half {
+        width: 100%;
+    }
+
+
+    .village-div {
+        flex: 1 1 0px
+    }
+
+    .ymca-div {
+        flex: 1 1 0px
+    }
+
+    .logout-button {
+        font-size: 20px;
+        width: 200px;
+        height: 50px;
+    }
+
+    .nav-logo {
+        position: absolute;
+        width: 120px;
+        height: 100px;
+        left: 40px;
+        top: 40px;
     }
 }
  
