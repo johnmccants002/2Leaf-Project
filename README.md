@@ -15,13 +15,13 @@
    <p align="center"> <strong>Main Screen</strong> </p>
     <br />
 
-<img src="https://i.imgur.com/QemK3Qt.png">
+<img src="https://i.imgur.com/H3wZJrr.png">
 
 <br />
    <p align="center"> <strong>Parent Portal Screen</strong> </p>
     <br />
 
-<img src="https://i.imgur.com/QGWz1T2.png">
+<img src="https://i.imgur.com/QzvbCkk.png">
 
 <br />
 
