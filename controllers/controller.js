@@ -101,7 +101,7 @@ async function registerUser(req, res) {
 			from: process.env.EMAIL,
 			subject: 'Email Confirmation: Level Up',
 			text: `Hello! Click the link below to verify your email!`,
-			html: `<a href="http://localhost:3000/verify-email/?token=${user.emailToken}"> Email Verificaton Click Here</a>`
+			html: `<a href="https://levelup-2leaf.herokuapp.com/verify-email/?token=${user.emailToken}"> Email Verificaton Click Here</a>`
 		};
 		try {
 			await sendgrid.send(msg);
@@ -132,8 +132,8 @@ async function mailSignUp(req, res) {
 		to: newMailUser.email,
 		from: process.env.EMAIL,
 		subject: 'Sign in to Level Up',
-		text: `Hello! Click the link below to finish signing in to LevelUp. http://https://levelup-2leaf.herokuapp.com/verify-email/levelup?token=${newMailUser.emailToken}`,
-		html: `<a href="http://https://levelup-2leaf.herokuapp.com/verify-email/levelup?token=${newMailUser.emailToken}"> Email Verificaton Click Here</a>`
+		text: `Hello! Click the link below to finish signing in to LevelUp. https://levelup-2leaf.herokuapp.com/verify-email/levelup?token=${newMailUser.emailToken}`,
+		html: `<a href="https://levelup-2leaf.herokuapp.com/verify-email/levelup?token=${newMailUser.emailToken}"> Email Verificaton Click Here</a>`
 	};
 	try {
 		await newMailUser.save()
