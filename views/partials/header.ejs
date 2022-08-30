@@ -1,6 +1,7 @@
 <html>
   <head>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/mobilestyle.css' />
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/6a7c9b5e8d346a26f8a365a00/53b18c96f65e500ca506115cf.js");</script>
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
@@ -29,15 +30,28 @@
                 <figure>
                     <img src="banner_image_2.png" alt>
                 </figure>
+                <figure>
+                  <img src="banner_image_1.png" alt>
+                  
+              </figure>
+              <figure>
+                <img src="banner_image_2.png" alt>
+            </figure>
             </figure>
         </div>
       
    
       <ul classname="logo-portal-ul">
         <li classname="logoli"><img class="nav-logo" src="white_logo.png" alt="" /></li>
-        <a href=<%= user ? '/parentportal': '/register' %>
-        <li class="portal-button-li"><button class="portal-button">Parent Portal ></button></li>
-        </a>
+        <% if (user) { %>
+          <a href="/parentportal" >
+          <li class="portal-button-li"><button class="portal-button">Parent Portal ></button></li>
+          </a>
+          <% } else { %>
+       
+        <li class="portal-button-li"><button id="myBtn" class="portal-button">Parent Portal ></button></li>
+
+        <% } %>
       </ul>
 
       <div class="partnership-container">
@@ -54,3 +68,67 @@
         </div>
       </div>
 
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-div">
+    <span class="close">&times;</span>
+      <div class="modal-content">
+      <div>
+      <h1 class="modal-h1">Please enter your password</h1>
+      </div>
+      
+    </br>
+    <div class="modal-form-div">
+
+    <form class="modal-sign-in"action="/login" method="POST" style="max-width: 300px">
+
+      <div class="modal-item">
+        <input type="text" name="password" placeholder="Enter Password"> </input>
+      </div>
+      <div>
+        <button class="modal-button modal-item" type="submit">Sign in</button>
+      </div>
+      
+    </form>
+    <div>
+        <p class="reachout">If you have any sign in trouble, please reach out to the program administrator.</p>
+    </div>
+  
+  </div>
+
+</div>
+</div>
+</div>
+
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>

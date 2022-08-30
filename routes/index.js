@@ -18,7 +18,8 @@ var MailUser = require('../models/mailuser')
 
 
 router.get('/', function (req, res) {
-    res.render('index', { user : req.user });
+
+    res.render('index', { user : req.user, username: "parent" });
 });
 
 router.get('/register', function(req, res) {
@@ -93,10 +94,13 @@ router.post('/register', urlencodedParser, async function(req, res) {
 router.post('/levelup/mailing', urlencodedParser, async function(req, res) {
     console.log(req.body.email, "this is the email")
         const mailUser = await MailUser.findOne({email: req.body.email})
+        console.log(mailUser)
         if (mailUser) {
             console.log('already have user')
-            res.redirect('/')
-        }
+            res.redirect('/');
+        } 
+
+        
 
     
     var newMailUser = new MailUser({
@@ -104,8 +108,6 @@ router.post('/levelup/mailing', urlencodedParser, async function(req, res) {
         email : req.body.email,
         emailToken: crypto.randomBytes(64).toString('hex')
     });
-   await newMailUser.save()
-    var link = `http://localhost:3000/verify-email?token=${newMailUser.emailToken}`
     var msg = {
         to: newMailUser.email,
         from: process.env.EMAIL,
@@ -114,6 +116,7 @@ router.post('/levelup/mailing', urlencodedParser, async function(req, res) {
         html: `<a href="http://localhost:3000/verify-email/levelup?token=${newMailUser.emailToken}"> Email Verificaton Click Here</a>`
       };
       try {
+        await newMailUser.save()
         await sendgrid.send(msg);
         console.log("Success sending Sendgrid message")
         res.redirect('/')
@@ -132,8 +135,48 @@ router.get('/login', function(req, res) {
     res.render('login', { user : req.user });
 });
 
-router.post('/login', isNotVerified, passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
+router.post('/login', function(req, res) {
+    console.log("This is body", req.body);
+    req.body.username = "parent"
+    // if ( req.isAuthenticated() ) {
+    //     res.redirect('/parentportal')
+    // } 
+
+    if(!req.body.username){ 
+        
+        res.json({success: false, message: "Username was not given"}) 
+      } else { 
+        if(!req.body.password){ 
+          res.json({success: false, message: "Password was not given"}) 
+          res.redirect('/')
+        }else{ 
+          passport.authenticate('local', function (err, user, info) { 
+             if(err){ 
+               res.json({success: false, message: err}) 
+             } else{ 
+              if (! user) { 
+                res.json({success: false, message: 'username or password incorrect'}) 
+              } else{ 
+                req.login(user, function(err){ 
+                  if(err){ 
+                    res.json({success: false, message: err}) 
+                    res.redirect('/')
+                  }else{ 
+                    // const token = jwt.sign({userId : user._id, 
+                    //    username:user.username}, secretkey, 
+                        //   {expiresIn: '24h'}) 
+                    // res.json({success:true, message:"Authentication successful" }); 
+                    res.redirect('/parentportal');
+                  } 
+                }) 
+              } 
+             } 
+          })(req, res); 
+        } 
+      } 
+
+
+    
 });
 
 router.get('/logout', function(req, res) {
@@ -151,17 +194,17 @@ router.get('/parentportal', function(req, res) {
     res.render('portal')
 })
 
-router.get('/login/email/verify', passport.authenticate('magiclink', {
-    successReturnToOrRedirect: '/',
-    failureRedirect: '/login'
-  }));
+// router.get('/login/email/verify', passport.authenticate('magiclink', {
+//     successReturnToOrRedirect: '/',
+//     failureRedirect: '/login'
+//   }));
 
-router.post('/login/email', passport.authenticate('magiclink', {
-    action: 'requestToken',
-    failureRedirect: '/login'
-  }), function(req, res, next) {
-    res.redirect('/login/email/check');
-  });
+// router.post('/login/email', passport.authenticate('magiclink', {
+//     action: 'requestToken',
+//     failureRedirect: '/login'
+//   }), function(req, res, next) {
+//     res.redirect('/login/email/check');
+//   });
 
 router.get('/login/email/check', async function(req, res, next) {
     res.render('login/email/check');
