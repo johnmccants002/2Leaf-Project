@@ -28,7 +28,7 @@
 <p align="center"> <strong>Responsiveness</strong> </p>
     <br />
 
-<img src="https://i.imgur.com/6rLcpdf.png">
+<img src="https://i.imgur.com/ijEx5io.png">
 
 <br />
 
