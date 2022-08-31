@@ -25,6 +25,13 @@
 
 <br />
 
+<p align="center"> <strong>Responsiveness</strong> </p>
+    <br />
+
+<img src="https://i.imgur.com/6rLcpdf.png">
+
+<br />
+
 
 ## Technologies Used
 Project is created with:
