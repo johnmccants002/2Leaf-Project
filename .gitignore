@@ -9,6 +9,7 @@
 
 # production
 /build
+/node__modules
 
 
 # Local Netlify folder
